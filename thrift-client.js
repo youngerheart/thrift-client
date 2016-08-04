@@ -180,8 +180,8 @@ class ThriftClient extends EventEmitter {
     return this;
   }
   hasRegistered(name) { return name in this[METHODS]; }
-  trigger(name, ctx) {
-    return Promise.resolve(ctx).then(this[METHODS][name]);
+  trigger(name, params) {
+    return Promise.resolve({params: params}).then(this[METHODS][name]);
   }
 }
 
